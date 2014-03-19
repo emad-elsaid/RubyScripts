@@ -1,0 +1,4 @@
+get facebook friends data and save them as json file
+https://gist.github.com/9623076
+
+#facebook #ruby

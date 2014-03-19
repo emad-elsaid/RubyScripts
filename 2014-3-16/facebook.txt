@@ -1,0 +1,24 @@
+Create Matrix Like screen using Ruby
+
+the idea is that this screen is a vertical lines each line
+moves vertically in random speed.
+
+each line has number of entities, each entity has a random 
+character with random size.
+
+each character is will be changed randomly, 
+so we created an entity class with this features 
+then created the vertical lines of them has the same number 
+of characters but with different speeds.
+
+and let them roll..
+after creating it i noticed that it changed to new character
+by 60 change per second (the FPS) so i had to invent a small technique
+to skip some second for the character changing.
+
+i could have been changed the FPS to lower value but this will slow
+down the lines movement, so to keep lines moving smoothly i kept FPS 
+high anad skipped random number of frames using a entity class member
+update_limit and last_update
+
+Gist: https://gist.github.com/9584057

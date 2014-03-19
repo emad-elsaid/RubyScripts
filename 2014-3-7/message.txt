@@ -1,0 +1,4 @@
+Gravatar image url generator simple method
+https://gist.github.com/9411128
+
+#ruby #rails #gravatar

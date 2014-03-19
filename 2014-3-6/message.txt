@@ -1,0 +1,4 @@
+Post an image using your Gmail account to tumblr
+https://gist.github.com/9388426
+
+#ruby #rails #tumblr #gmail

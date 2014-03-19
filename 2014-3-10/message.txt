@@ -1,0 +1,3 @@
+Random bouncy particles using ruby Gosu games library
+https://gist.github.com/9463030
+#ruby #rails #gosu

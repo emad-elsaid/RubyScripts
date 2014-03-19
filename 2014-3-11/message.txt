@@ -1,0 +1,4 @@
+Simple fuzzy search algorithm similar to sublimeText
+https://gist.github.com/9484194
+
+#sublime #ruby #search

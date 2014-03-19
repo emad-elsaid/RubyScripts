@@ -1,0 +1,11 @@
+get facebook friends data and save them as json file
+
+first get require koala library for facebook interaction
+get an access token with "user_friends" permission for any application you have
+then use the script, it should get all facebook friends pages and collect all
+of them into an array and save them to a file as json format,
+also you can import 'psych' and save them as YAML file using
+to_yaml instead of to_json ;) that was easy huh?
+
+gist: https://gist.github.com/9623076
+#facebook #ruby

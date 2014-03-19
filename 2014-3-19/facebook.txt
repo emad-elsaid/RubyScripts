@@ -1,0 +1,32 @@
+Worm game in under 50 line of code in ruby
+
+i enjoyed doing this simple game, it is amazing that
+you can create the games you were playing in your childhood.
+
+the amazing worm game i were playing on the low-res hand gaming
+device, it is simple in design and logic.
+
+first you define window dimensions and for the sake of simplicity
+i choose to make it square, also define screen resolution (number
+of squared per vertical/Horizontal line).
+
+you worm is simple, it consis of number of consecutive pixels,
+and a direction, the screen has a worm part (we call it food)
+worm will move till it hit the part and it joins it to its body
+and the game generates a new food in a random position.
+
+worm movement is restricted to some simple conditions
+* don't get out of the screen
+* don't hit your self
+if any one of these conditions occure then reset the game.
+
+script was longer than this one i attached i had to compress
+some lines to suite the image like joining some variables lines
+and join the lines of single line methods this saves 2 lines.
+
+it was a good challenge i hope to be useful as an overall idea
+for whom of you want to start game development. :)
+
+try to enhance the script, make it a more awesome game and happy coding :)
+
+gist: https://gist.github.com/9640436

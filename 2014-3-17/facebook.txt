@@ -1,0 +1,15 @@
+Create a Waving ColorSpace using ruby
+
+this screen consist of equal squares, each one has a color
+in the format (Hue, Saturation, Value), and a color velocity+direction
+each time we want to wave the color, we'll add the color velocity
+to the color components respectively, and if the color reached 
+the component limit e.g(0<Hue<360) the Color will reset to the limit.
+that was easy, script is flexible so you can enlarge screen dimension
+to get a bigger dream :), and you can play with squares numeber for higher
+resolution or lower one.
+
+Have fun playing with it, also if you have any great idea for tomorrow's script
+send me a message, or put it in a comment here.
+
+Gist: https://gist.github.com/9598606

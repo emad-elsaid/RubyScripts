@@ -1,0 +1,15 @@
+Monitor directories sizes and take an action if one of them exceeded
+
+this is a simple script for system administrators to monitor directories sizes
+and report to them if one of them exceeded the allocated size.
+
+the problem arise if you're responsible of a system and wanted to monitor small websites
+sizes without blocking their expansion, so you'll have to create a deamon application that
+alert you when one of them exceeds the size expected.
+
+this script will do so, it'll iterate on a set of directories and check their size
+and alert you if one of them exceeded their size, and will wait for one hour then try again
+
+you can change the waiting period and directories set and sizes expected in bytes.
+
+gist: https://gist.github.com/9527136

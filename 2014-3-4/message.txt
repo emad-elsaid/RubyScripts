@@ -1,0 +1,2 @@
+backup mysql database and send it to your email script
+https://gist.github.com/9345762

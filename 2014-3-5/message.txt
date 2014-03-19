@@ -1,0 +1,4 @@
+Post files to gist and get Gist url from commandline
+https://gist.github.com/blazeeboy/9366614
+
+#ruby #rails #github

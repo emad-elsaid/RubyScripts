@@ -1,0 +1,3 @@
+monitor directories sizes and take an action if one of them exceeded
+https://gist.github.com/9527136
+#ruby

@@ -1,0 +1,4 @@
+generate random string from a canonical form useful for responding like humans
+https://gist.github.com/9429208
+
+#ruby #rails

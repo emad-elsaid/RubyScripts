@@ -1,0 +1,19 @@
+Live Calculator + Math module using ruby and sinatra
+
+this calculator will open port 3000 using sinatra and listen on two
+paths the root (http://localhost:3000/) to load the calculator HTML
+and /calc path (http://localhost:3000/calc) to evaluate expression
+
+when you write any expression such as (2+2) javascrip will send the
+expression as you type to /calc path and get teh result into a div with
+id=result
+
+i included the Math module so you can use cos, sin, tan and any method
+within the ruby Math Module.
+
+also as this calculator uses eval method you can use it to evaluate a
+pure ruby expression such as "Emad "*10 this will print "Emad" 10 times
+
+have fun and let me know how did you use it ;)
+
+Gist: https://gist.github.com/9565542

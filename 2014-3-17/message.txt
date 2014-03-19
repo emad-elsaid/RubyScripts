@@ -1,0 +1,4 @@
+Create a Waving ColorSpace using ruby
+https://gist.github.com/9598606
+
+#ruby #colors #gosu

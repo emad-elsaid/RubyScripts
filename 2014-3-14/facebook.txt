@@ -1,0 +1,23 @@
+Download your latest 30 Github Gists to local directory
+
+github API is very simple REST API, similar to Facebook Graph API
+if you sent a GET request to some URL will respond in JSON with 
+the entity data.
+
+Github API rate limit is 60 request per hour per IP address, so
+you'll hit teh limit pretty fast if you don't have an authorized 
+application, Oauth applications gets upto 5,000 requests per Hours
+Per IP address, this script uses a non authorized approach.
+
+first you'll get the users first page of gists, to get second page
+you need to add "?page=2" to the end of URL, but as we said we can't
+do this because of the rate limit, if you'll use the second approach 
+then you're welcome to add this parameter and increase it each time.
+
+second we'll iterate over all gists and make directory for each using
+its unique ID and save the gist files to that directory.
+
+aaaand its done, you have your latest 30 gists in a your local machine
+in no time. :)
+
+Gist: https://gist.github.com/9547245

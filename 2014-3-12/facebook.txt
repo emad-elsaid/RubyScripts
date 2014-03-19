@@ -1,0 +1,13 @@
+this script is soooo awesome
+
+it will convert any ruby script to image, and any other script (you can change language name to make it suitable for python, css, html for instance),
+
+code depend on 2 gems (pygmentize and selenium), first it read code and highlight it using Pygmentize
+then insert the output to a webpage with CSS style to color the tokens.
+
+next save the whole HTML page to disk and use Selenium to open it using Filefox (so make sure you have it installed on your machine)
+
+it saves the page as image to your disk then closes the browser and delete the HTML page (some housekeeping)
+aaaand Tadaaaa you have your code highlighted as an image.
+
+Gist: https://gist.github.com/9506251

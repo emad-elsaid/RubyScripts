@@ -1,0 +1,29 @@
+Simple fuzzy search algorithm similar to sublimeText
+
+this is a simple algorithm to give a similar result
+as SublimeText search feature, if you don't use sublimeText
+i think you should just give it a shot from here :
+http://www.sublimetext.com
+
+to know more about fuzzy search you should check this wiki page:
+http://en.wikipedia.org/wiki/Fuzzy_string_searching
+
+the idea is simple, when you search for a text and you can't remember
+only part of it or you miss some characters while typing the search should
+be smart enough to show you what you're searching for, so your algorithm
+should search for the query characters and allow any character to 
+be followed by any other character sequence.
+
+after you get strings that contain your query the fuzzy why,
+you should rank them, i choose the simple one, if you found your
+exact query your matching pattern will be the least of them in length
+and if another patter has query plus one character you missed it
+will be the second in search, and so on.
+
+so i sorted ascending order by the matching pattern length.
+
+a smarter algorithm should check if there are 2 matching and get the best one
+also should check if you wrote a wrong character, and if you switched two characters
+and so on of the operations mentioned in wikipedia.
+
+gist : https://gist.github.com/9484194
