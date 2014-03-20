@@ -1,0 +1,19 @@
+Facebook group hall of fame script
+
+if you're a facebook group admin, and you faced a tiny problem
+of "who are the active members in my group?" and want to make
+analytics about it, here is the magical way.
+
+this script will find the target group by its name and get the
+latest posts pages till it reach a certain limit or exceed it
+then will merge the posts in the form of (user -> count of posts)
+then sort them descending and show you the group Hall of fame
+
+i usedkoala gem (it is very simple and i used it before alot), 
+psych gem to to_yaml, if you prefer you can save it as json or
+any other format, have fun playing with it.
+
+PS: BTW, this song is a little inspiring when you're running the script :D
+https://www.youtube.com/watch?v=mk48xRzuNvA
+
+Gist: https://gist.github.com/9662408
