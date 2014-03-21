@@ -1,0 +1,19 @@
+Print all your facebok liked pages names, URLs and when did you like it
+
+this is pretty easy, facebook provide us with all your likes
+and when did you like it, the simple problem is it provide it
+as pages so iterate till you get all pages.
+
+Facebook API docs says that each page object has a link attribute
+i thought that was the page link on facebook, then i found that it
+was always empty, so i formed the URL using the page ID as :
+facebook.com/:id
+
+this script was done for a simple purpose, facebook had an issue yesterday
+lots of mages are created in 18th with likes over 700K so i suspected that
+this is a copy/merge, so i had to write thsi script to get all my pages and
+another friend pages to see which page is doing that thing.
+
+unforunatily we still didn't figure it out :D
+
+Gist: https://gist.github.com/9686717

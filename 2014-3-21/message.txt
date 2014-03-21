@@ -1,0 +1,4 @@
+Print all your facebok liked pages names, URLs and when did you like it
+https://gist.github.com/9686717
+
+#facebook #ruby
