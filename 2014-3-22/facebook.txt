@@ -1,0 +1,19 @@
+Download all messages between you and a friend from facebook
+
+that was a little hard, getting all messages between you and a friend
+require that you know the thread ID, so i had to grab all your latest messages
+from inbox and prompt the user to choose one of them and tell me the ID
+
+next i faced a weired problem : Facebook Graph documentation is outdated and 
+each time i get a request i can' access information the right way, so i had
+to inspect and use IRB step by step to get it done.
+
+the third problem was that facebook treat messages as posts, so the first time
+you send a message to a friend is a post and all the other messages are comments
+T_T that made me cry, after getting all comments i had to get the original message
+in a separate request.
+
+that was a harder script than i thought, but here we are, finished and ready for 
+you to have fun with ;)
+
+Gist: https://gist.github.com/9706660
