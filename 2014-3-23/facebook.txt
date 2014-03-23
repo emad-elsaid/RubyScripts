@@ -1,0 +1,18 @@
+PDF to Text converter using ruby
+
+this script is simpel and pased on an example of the PDF reader
+gem (https://github.com/yob/pdf-reader/blob/master/examples/text.rb)
+
+i get all files passed to the script from command line and open each
+PDF file then map all pages to the text content and write them to 
+text file with the same name as the original + txt extension
+
+the gem was raising an error when it fail to get text from a page
+so i had to make a workaround and rescue that exception with my hero powers
+:D and return an empty text instead.
+
+script is verbose so you'll know all the progress happening while converting
+your files.
+
+Gist : https://gist.github.com/9722831
+#ruby #pdf
