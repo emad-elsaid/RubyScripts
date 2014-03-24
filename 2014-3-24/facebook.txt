@@ -1,0 +1,28 @@
+Uplaod files and images from you android to your desktop/laptop
+
+i faced a problem couple days ago, my engagement party photos
+were stuck on my mobile phone i can't transfer them to my mac osx
+laptop, as mac doesn't want to configure my android phone as 
+disk storage, neither want to show the photos when i configure
+it as a camera, so i had to solve it with a simple trick (not
+the explained trick here).
+
+the following script will solve a problem like this,
+you can run this script from your desktop, and take a note
+of your IP address over your WIFI network.
+
+then connect your phone to the same WIFI network and open
+"http://<ip-address>:3000" choose all the files you want to
+copy to your machine and press upload,
+
+voaalaaaa, and it is in your laptop now :), also as android
+has some good features, when you try to choose the file manager
+of image gallery to upload you will find other options to take
+a picture and upload it directly to your desktop, and
+or record sound and upload it directly, and other options
+depending on your android applications.
+
+have fun with it and let me know how did you use it.
+
+Gist: https://gist.github.com/blazeeboy/9740135
+#ruby #android #sinatra
