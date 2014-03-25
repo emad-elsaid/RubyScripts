@@ -1,0 +1,11 @@
+Get your twitter Now playing stream
+
+this sould me a good start for a tiwtter music player the idea is suggested by @EyeWriteCode on twitter, it is easy, we want to know what my friends are listening to, the tweets should be marked by one of the now playing hashtags (#NP,#NW, #nowplaying..etc).
+
+so far this is pretty easy, get tweets and filter them with hashtag, but lets leverage it abit more, how about cleaning the tweet a little bit ? lets remove all mentions and hashtags and consecutive spaces and new lines to make it more readable.
+
+this could be enhanced even more by separating links into the end of the tweet, of cleaning the tweet even more from dashes and all the unnecessary stuff.
+
+Gist: https://gist.github.com/9763040
+
+#ruby #twitter #nowplaying #music

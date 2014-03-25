@@ -1,0 +1,3 @@
+Get your twitter Now playing stream
+https://gist.github.com/9763040
+#ruby #twitter #nowplaying #music
