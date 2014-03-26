@@ -1,0 +1,3 @@
+Draw a Moving line with mouse using Ruby and Gosu gem
+https://gist.github.com/9783169
+#ruby #gosu #drawing

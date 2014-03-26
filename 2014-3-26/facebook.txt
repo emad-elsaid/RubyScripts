@@ -1,0 +1,9 @@
+Draw a Moving line with mouse using Ruby and Gosu gem
+
+this is a small trick i wanted to do long time ago, the line the get erased after a small period of time, walking with your mouse like a spilled ink, well that was easy, i had to record points of teh mouse
+all the time and remove the old points when the line reach a constant number of points, this way the line won't be extended forever and it'll be shortened till it disappear as even when you stop moving mouse the script will continue to add points which will make the line continue to shrink. :D
+
+this script can be enhanced with various ways, why not try to modify it and let me see some magic ?
+
+Gist: https://gist.github.com/9783169
+#ruby #gosu #drawing
