@@ -1,0 +1,3 @@
+this is a straight forward of the wikipedia example of a maze generator, the example was written using python, this code is a port of this code in ruby, then i compacted the syntax a little bit to fit in one window :D, that was the hardest part, i had to remove and join some lines and put the algorithm directly in teh draw method of the window to save a couple more lines.
+
+this generator will generate a random maze every one second, you can play with dimensions, colors, resolution of a maze to get some other variants.
