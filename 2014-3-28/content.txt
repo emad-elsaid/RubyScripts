@@ -1,0 +1,9 @@
+Commander gem is greate, it helped me generate command line application skeleton containing default behaviour like --help option to show help string (it generate it automatically)
+
+try "ruby storage.rb --help" 
+
+and -t option to trace errors try  "ruby storage.rb -t", and also it parses the command line arguments and options parameters and separated commands as blocks of code with description, examples, and options available.
+
+everything was smooth after generatign the application using "commander init storage.rb", i hade to write my own logic inside commands code blocks.
+
+i highly recommend you try it for your commandline scripts instead of writing yor own solution, just use it to help you, also it contains highline gem for the "ask" method, it help you ask user for input, password, choices...etc.
