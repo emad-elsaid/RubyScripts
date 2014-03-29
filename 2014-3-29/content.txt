@@ -1,0 +1,7 @@
+each day i hae to sumit to several social networks including Facebook, twitter, google+, linkedin, coderwall, and several other websites.
+
+this is alot of time spent on the same steps over and over, some websites doesn't have API to submit like Coderwall for example, so i have to simulate my behaviour using selenium.
+
+this script uses github to login to coderwall.com and submit a new protip, script has two parts, first goes to the coderwall github authentication link, login using user data, it forward back to coderwall, second it goes to the new protip link and submit the data.
+
+it uses firefox web driver, so firefoz should be installed on your system.
