@@ -1,0 +1,7 @@
+this script is part of my quest to create a facebook bot for executing code and respond with code output in another comment, this is similar to a reddit bot.
+
+the first step is to submit code and get the output or error from a service online, i found that Eval.in is simple and free and supports json formatted output.
+
+so i get the code and language, get the language eval.in friendly name, the sumit those values to eval.in and it should redirect to the code page if everything is fine.
+
+i get this URL of the code and request the JSON format of this page it will return code output, or error string, also will return the time of execution and exit error number.
