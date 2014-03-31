@@ -1,0 +1,3 @@
+this is a very simple script, i created to track when did i open and closes my computer, on the long run, i can read these data and analyse it to see detect my usage patterns and how to improve my computer usage for a better work/life balance.
+
+this script uses simple text file as log file, it write the event then the Time of the event in each line, i used integers instead of string for event value so opening pc = 1 , closing = 0 to save space.
