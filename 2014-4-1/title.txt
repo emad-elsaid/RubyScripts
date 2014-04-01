@@ -1,0 +1,1 @@
+Get All your Facebook Checkins and print out location lang/long

@@ -1,0 +1,1 @@
+this is a simple script to get all your facebook checkins and print out the location name and lat/long, this will be useful if you wanted to make a map of the locations you have visited in your life, just like facebook does on your profile.
