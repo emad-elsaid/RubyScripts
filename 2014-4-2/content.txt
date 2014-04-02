@@ -1,0 +1,10 @@
+this was to as simple as it looks, first the linkedin gem installation is simple we know that just "gem install linkedin"
+the example of linkedin gem usage was longer, first you have to generate an authentication request url pass it to user to open then user will get a pin he copy and paste it to your application, application will get authentication tokens using this pin.
+
+it turns out that linkedin already generate these tokens for you, if you tried to ask for authentication then use the tokens you got it'll raise an error (500), so the solutions was to just use the token without trying to form a request to authenticate.
+
+the problem is when you create the application in linkedin developers portal it doesn't tell you anything about these token and leave you to find out yourself how to use them :D,
+
+one other thing, when you post using an application to from linkedin web interface, your post will take time to appear on your timeline, it won't appear instantly, so be patient.
+
+nice one linkedin team, nice one
