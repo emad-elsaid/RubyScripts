@@ -1,0 +1,202 @@
+<html>
+<head>
+<style>
+body { background: #29281e; padding:0px; margin:0px; font-family: verdana, tahoma; font-size: 13px; }
+.content{ border-collapse: collapse; }
+.section{ padding: 5px; border-top: 1px solid #333; } 
+.commentblock{ width: 40%;text-align: right; vertical-align: top; font-size: 13px; color: #ddd; text-shadow: 1px 1px 0px black; }
+.codeblock{ width: 60%; background: #29281e; border-left: 1px solid #333; padding-left: 10px; }
+.commentblock a{ color: #fff; }
+.codeblock pre{ white-space: pre-wrap; margin: 0px; }
+.highlight { padding: 0px; font-size: 13px; }
+div.highlight, div.highlight code, div.highlight pre  { padding: 0px; }div.highlight code { padding: 0; }div.highlight .c { color: #75715e }div.highlight .err { color: #960050; background-color: #1e0010 }div.highlight .k { color: #66d9ef }div.highlight .l { color: #ae81ff }div.highlight .n { color: #f8f8f2 }div.highlight .o { color: #f92672 }div.highlight .p { color: #f8f8f2 }div.highlight .cm { color: #75715e }div.highlight .cp { color: #75715e }div.highlight .c1 { color: #75715e }div.highlight .cs { color: #75715e }div.highlight .ge { font-style: italic }div.highlight .gs { font-weight: bold }div.highlight .kc { color: #66d9ef }div.highlight .kd { color: #66d9ef }div.highlight .kn { color: #f92672 }div.highlight .kp { color: #66d9ef }div.highlight .kr { color: #66d9ef }div.highlight .kt { color: #66d9ef }div.highlight .ld { color: #e6db74 }div.highlight .m { color: #ae81ff }div.highlight .s { color: #e6db74 }div.highlight .na { color: #a6e22e }div.highlight .nb { color: #f8f8f2 }div.highlight .nc { color: #a6e22e }div.highlight .no { color: #66d9ef }div.highlight .nd { color: #a6e22e }div.highlight .ni { color: #f8f8f2 }div.highlight .ne { color: #a6e22e }div.highlight .nf { color: #a6e22e }div.highlight .nl { color: #f8f8f2 }div.highlight .nn { color: #f8f8f2 }div.highlight .nx { color: #a6e22e }div.highlight .py { color: #f8f8f2 }div.highlight .nt { color: #f92672 }div.highlight .nv { color: #f8f8f2 }div.highlight .ow { color: #f92672 }div.highlight .w { color: #f8f8f2 }div.highlight .mf { color: #ae81ff }div.highlight .mh { color: #ae81ff }div.highlight .mi { color: #ae81ff }div.highlight .mo { color: #ae81ff }div.highlight .sb { color: #e6db74 }div.highlight .sc { color: #e6db74 }div.highlight .sd { color: #e6db74 }div.highlight .s2 { color: #e6db74 }div.highlight .se { color: #ae81ff }div.highlight .sh { color: #e6db74 }div.highlight .si { color: #e6db74 }div.highlight .sx { color: #e6db74 }div.highlight .sr { color: #e6db74 }div.highlight .s1 { color: #e6db74 }div.highlight .ss { color: #e6db74 }div.highlight .bp { color: #f8f8f2 }div.highlight .vc { color: #f8f8f2 }div.highlight .vg { color: #f8f8f2 }div.highlight .vi { color: #f8f8f2 }div.highlight .il { color: #ae81ff }
+</style>
+</head>
+<body>
+<table class="content"><tr><td class="section commentblock"></td><td class="section codeblock"><div class="highlight"><pre><span class="c1">#!/usr/bin/env ruby</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>Author : Emad Elsaid (<a href="https://github.com/blazeeboy">https://github.com/blazeeboy</a>)</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;pygmentize&#39;</span> <span class="c1"># gem install pygmentize</span>
+<span class="nb">require</span> <span class="s1">&#39;redcarpet&#39;</span> <span class="c1"># gem install redcarpet</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>consecutive lines of code
+should be highlighted using pygmentize
+and converter to markdown block simply
+using the markdown syntax for code
+used by github flavored markdown</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CodeBlock</span> <span class="o">&lt;</span> <span class="nb">Array</span>
+
+  <span class="k">def</span> <span class="nf">to_html</span>
+    <span class="no">Pygmentize</span><span class="o">.</span><span class="n">process</span> <span class="n">join</span><span class="p">,</span> <span class="ss">:ruby</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">to_md</span>
+    <span class="s2">&quot;```ruby</span><span class="se">\n</span><span class="si">#{</span><span class="n">join</span><span class="si">}</span><span class="se">\n</span><span class="s2">```&quot;</span>
+  <span class="k">end</span>
+  <span class="n">alias_method</span> <span class="ss">:to_markdown</span><span class="p">,</span> <span class="ss">:to_md</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>set of consecutive lines of comments</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CommentBlock</span> <span class="o">&lt;</span> <span class="nb">Array</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>will use this Redcarpet renderer to convert
+markdown to html</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="vc">@@renderer</span> <span class="o">=</span> <span class="no">Redcarpet</span><span class="o">::</span><span class="no">Markdown</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">Redcarpet</span><span class="o">::</span><span class="no">Render</span><span class="o">::</span><span class="no">HTML</span><span class="p">,</span> 
+                            <span class="n">fenced_code_blocks</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+                            <span class="n">disable_indented_code_blocks</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+                            <span class="n">strikethrough</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+                            <span class="n">superscript</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+                            <span class="n">underline</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span>
+                            <span class="n">autolink</span><span class="p">:</span> <span class="kp">true</span> <span class="p">)</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>use the renderer on the content</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">to_html</span>
+    <span class="vc">@@renderer</span><span class="o">.</span><span class="n">render</span> <span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>convert the block to markdown format
+and also give it a full name alias</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">to_md</span>
+    <span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="n">alias_method</span> <span class="ss">:to_markdown</span><span class="p">,</span> <span class="ss">:to_md</span>
+
+<span class="k">end</span> 
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>container class will have multiple blocks of
+comments and code</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="k">class</span> <span class="nc">CodeConverter</span> <span class="o">&lt;</span> <span class="nb">Array</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>you should pass code when
+initializing new instance
+in order to parse it</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span> <span class="n">code</span> <span class="p">)</span>
+    <span class="n">parse</span> <span class="n">code</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>add new line of code to the class
+it start new code block if the last block is
+not code block then adds the line of code
+to the last block</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">add_code</span><span class="p">(</span> <span class="n">line</span> <span class="p">)</span>
+    <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="no">CodeBlock</span><span class="o">.</span><span class="n">new</span> <span class="k">unless</span> <span class="n">last</span><span class="o">.</span><span class="n">is_a?</span> <span class="no">CodeBlock</span>
+    <span class="n">last</span> <span class="o">&lt;&lt;</span> <span class="n">line</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>add new comment line to the class
+it adds new comment block if the last block is not
+comments block then add the comment line to the block</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">add_comment</span><span class="p">(</span> <span class="n">line</span> <span class="p">)</span>
+    <span class="nb">self</span> <span class="o">&lt;&lt;</span> <span class="no">CommentBlock</span><span class="o">.</span><span class="n">new</span> <span class="k">unless</span> <span class="n">last</span><span class="o">.</span><span class="n">is_a?</span> <span class="no">CommentBlock</span>
+    <span class="n">last</span> <span class="o">&lt;&lt;</span> <span class="n">line</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>parse code and put result to this class
+first insert a comment block then
+parse each line and add it according
+to the line type</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+    <span class="n">replace</span> <span class="o">[</span><span class="no">CommentBlock</span><span class="o">.</span><span class="n">new</span><span class="o">]</span>
+
+    <span class="n">code</span><span class="o">.</span><span class="n">lines</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
+      <span class="k">case</span>
+        <span class="k">when</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="o">.</span><span class="n">start_with?</span><span class="p">(</span><span class="s1">&#39;# &#39;</span><span class="p">)</span>
+          <span class="n">add_comment</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="o">[</span><span class="mi">2</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+
+        <span class="k">when</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="o">.</span><span class="n">start_with?</span><span class="p">(</span><span class="s1">&#39;#!&#39;</span><span class="p">)</span>
+          <span class="n">add_code</span> <span class="n">line</span>
+
+        <span class="k">when</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="o">.</span><span class="n">start_with?</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+          <span class="n">add_comment</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+
+        <span class="k">else</span>
+          <span class="n">add_code</span> <span class="n">line</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>convert each block to html
+and wrap it in a styled page
+if a file path passed it&#39;ll write output to it
+in all cases it&#39;ll return the output</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">to_html</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">)</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="n">with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">block</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> 
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>each cell in resulted table
+will have a class same as the
+class name of teh block downcased</p>
+</td><td class="section codeblock"><div class="highlight"><pre>          <span class="n">klass</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">downcase</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>start table row or end it
+according to the current block index</p>
+</td><td class="section codeblock"><div class="highlight"><pre>          <span class="n">prefix</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">even?</span> <span class="p">?</span> <span class="s1">&#39;&lt;tr&gt;&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span>
+          <span class="n">suffix</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">odd?</span> <span class="p">?</span> <span class="s1">&#39;&lt;/tr&gt;&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>produced block html</p>
+</td><td class="section codeblock"><div class="highlight"><pre>          <span class="s2">&quot;</span><span class="si">#{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&lt;td class=</span><span class="se">\&quot;</span><span class="s2">section </span><span class="si">#{</span><span class="n">klass</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&gt;</span><span class="si">#{</span><span class="n">block</span><span class="o">.</span><span class="n">to_html</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span><span class="si">#{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span> 
+        <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>add a closing cell if the code
+ends with comments lines</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="n">code</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&quot;</span> <span class="k">if</span> <span class="n">last</span><span class="o">.</span><span class="n">is_a?</span> <span class="no">CommentBlock</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>here is the full page with embeded style
+i had to add the css here to make sure script stay as
+one file not multiple dependent files.</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="n">html</span> <span class="o">=</span> <span class="o">&lt;&lt;-</span><span class="no">EOT</span>
+<span class="sh">&lt;html&gt;</span>
+<span class="sh">&lt;head&gt;</span>
+<span class="sh">&lt;style&gt;</span>
+<span class="sh">body { background: #29281e; padding:0px; margin:0px; font-family: verdana, tahoma; font-size: 13px; }</span>
+<span class="sh">.content{ border-collapse: collapse; }</span>
+<span class="sh">.section{ padding: 5px; border-top: 1px solid #333; } </span>
+<span class="sh">.commentblock{ width: 40%;text-align: right; vertical-align: top; font-size: 13px; color: #ddd; text-shadow: 1px 1px 0px black; }</span>
+<span class="sh">.codeblock{ width: 60%; background: #29281e; border-left: 1px solid #333; padding-left: 10px; }</span>
+<span class="sh">.commentblock a{ color: #fff; }</span>
+<span class="sh">.codeblock pre{ white-space: pre-wrap; margin: 0px; }</span>
+<span class="sh">.highlight { padding: 0px; font-size: 13px; }</span>
+<span class="sh">div.highlight, div.highlight code, div.highlight pre  { padding: 0px; }div.highlight code { padding: 0; }div.highlight .c { color: #75715e }div.highlight .err { color: #960050; background-color: #1e0010 }div.highlight .k { color: #66d9ef }div.highlight .l { color: #ae81ff }div.highlight .n { color: #f8f8f2 }div.highlight .o { color: #f92672 }div.highlight .p { color: #f8f8f2 }div.highlight .cm { color: #75715e }div.highlight .cp { color: #75715e }div.highlight .c1 { color: #75715e }div.highlight .cs { color: #75715e }div.highlight .ge { font-style: italic }div.highlight .gs { font-weight: bold }div.highlight .kc { color: #66d9ef }div.highlight .kd { color: #66d9ef }div.highlight .kn { color: #f92672 }div.highlight .kp { color: #66d9ef }div.highlight .kr { color: #66d9ef }div.highlight .kt { color: #66d9ef }div.highlight .ld { color: #e6db74 }div.highlight .m { color: #ae81ff }div.highlight .s { color: #e6db74 }div.highlight .na { color: #a6e22e }div.highlight .nb { color: #f8f8f2 }div.highlight .nc { color: #a6e22e }div.highlight .no { color: #66d9ef }div.highlight .nd { color: #a6e22e }div.highlight .ni { color: #f8f8f2 }div.highlight .ne { color: #a6e22e }div.highlight .nf { color: #a6e22e }div.highlight .nl { color: #f8f8f2 }div.highlight .nn { color: #f8f8f2 }div.highlight .nx { color: #a6e22e }div.highlight .py { color: #f8f8f2 }div.highlight .nt { color: #f92672 }div.highlight .nv { color: #f8f8f2 }div.highlight .ow { color: #f92672 }div.highlight .w { color: #f8f8f2 }div.highlight .mf { color: #ae81ff }div.highlight .mh { color: #ae81ff }div.highlight .mi { color: #ae81ff }div.highlight .mo { color: #ae81ff }div.highlight .sb { color: #e6db74 }div.highlight .sc { color: #e6db74 }div.highlight .sd { color: #e6db74 }div.highlight .s2 { color: #e6db74 }div.highlight .se { color: #ae81ff }div.highlight .sh { color: #e6db74 }div.highlight .si { color: #e6db74 }div.highlight .sx { color: #e6db74 }div.highlight .sr { color: #e6db74 }div.highlight .s1 { color: #e6db74 }div.highlight .ss { color: #e6db74 }div.highlight .bp { color: #f8f8f2 }div.highlight .vc { color: #f8f8f2 }div.highlight .vg { color: #f8f8f2 }div.highlight .vi { color: #f8f8f2 }div.highlight .il { color: #ae81ff }</span>
+<span class="sh">&lt;/style&gt;</span>
+<span class="sh">&lt;/head&gt;</span>
+<span class="sh">&lt;body&gt;</span>
+<span class="sh">&lt;table class=&quot;content&quot;&gt;#{code.join}&lt;/table&gt;</span>
+<span class="sh">&lt;/body&gt;</span>
+<span class="sh">&lt;/html&gt;</span>
+<span class="no">EOT</span>
+  
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>write output to file if a path is passed
+and return html</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="no">File</span><span class="o">.</span><span class="n">write</span> <span class="n">file</span><span class="p">,</span> <span class="n">html</span> <span class="k">unless</span> <span class="n">file</span><span class="o">.</span><span class="n">nil?</span>
+    <span class="n">html</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>Convert the analyzed code into Markdown
+this is easier than HTML as you&#39;ll need
+to convert each block to markdown and
+join them with new line
+write output to file if a path is passed</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">to_md</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+    
+    <span class="n">md</span> <span class="o">=</span> <span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">b</span><span class="o">|</span> <span class="n">b</span><span class="o">.</span><span class="n">to_md</span> <span class="p">}</span><span class="o">.</span><span class="n">join</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+    <span class="no">File</span><span class="o">.</span><span class="n">write</span> <span class="n">file</span><span class="p">,</span> <span class="n">md</span> <span class="k">unless</span> <span class="n">file</span><span class="o">.</span><span class="n">nil?</span>
+    <span class="n">md</span>
+  <span class="k">end</span>
+  <span class="n">alias_method</span> <span class="ss">:to_markdown</span><span class="p">,</span> <span class="ss">:to_md</span>
+
+<span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><h2>How to use ?</h2>
+
+<p>create new Code Converter class with code</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="n">blocks</span> <span class="o">=</span> <span class="no">CodeConverter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;/path/to/code/file.rb&#39;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>and convert to html and markdown and save it to this file path</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="n">blocks</span><span class="o">.</span><span class="n">to_html</span> <span class="s1">&#39;/path/to/html/code.html&#39;</span>
+<span class="n">blocks</span><span class="o">.</span><span class="n">to_md</span> <span class="s1">&#39;/path/to/md/markdown.md&#39;</span>
+</pre></div>
+</td></tr></table>
+</body>
+</html>

@@ -1,0 +1,17 @@
+---
+title: Convert Ruby scripts to HTML and Markdown
+content: "first i have to say that my scripts will be a little longer\nthan ever,
+  to be more verbose and less encrypted, so images \nassociated with my posts will
+  be cropped and linked to\nfull post on Github, post will contain an HTML version
+  \nand code file.\nthis script will read ruby code and parse it and split it to\nset
+  of blocks (code blocks, comments blocks) and then output\nHTML format or Markdown
+  Format, make sure your comments are written\nin Markdown format.\ni combine this
+  script with an older one that convert HTML page to PNG image\nand then i use Cairo
+  library to crop it and write the post title, \nyou can use it to generate beautiful
+  code documentation with a bit of\nenhancement (index page and links back in each
+  page maybe)."
+tags:
+- ruby
+- markdown
+- docco
+gist: https://gist.github.com/11113733
