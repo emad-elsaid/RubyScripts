@@ -1,0 +1,10 @@
+---
+title: Facebook Bot responds with code output
+content: |-
+  this script is a bot that will wait for anyone to mention you in a comment with language name and some code he want to execute and see the output, script will get the comment and parse it, then use an old script i have written before to execute scripts using eval.in website, gets the output and comment back to the same post with output, status code and a link to the code page on eval.in website.
+  you will need to create a facebook user, register it as a Developer, create a new application and get access token then modify the constants of the script (app_id, app_secret) and then execute the script with access token as parameter and execute it again without parameter to make it listen to notifications, the script will work only on comments in groups, as i exclusively made it for egyptian geeks group, if you want you can remove the filter of notifications and it'll erspond to everyone, but that will be headache and my consume your application rate limit
+  the idea of this script is not mine, it is made before by other developers for IRC and Reddit, i created it for facebook :), have fun
+tags:
+- ruby
+- code
+- evalin

@@ -1,0 +1,121 @@
+<html>
+<head>
+<style>
+body { background: #29281e; padding:0px; margin:0px; font-family: verdana, tahoma; font-size: 13px; }
+.content{ border-collapse: collapse; }
+.section{ padding: 5px; border-top: 1px solid #333; } 
+.commentblock{ width: 40%;text-align: right; vertical-align: top; font-size: 13px; color: #ddd; text-shadow: 1px 1px 0px black; }
+.codeblock{ width: 60%; background: #29281e; border-left: 1px solid #333; padding-left: 10px; }
+.commentblock a{ color: #fff; }
+.codeblock pre{ white-space: pre-wrap; margin: 0px; }
+.highlight { padding: 0px; font-size: 13px; }
+div.highlight, div.highlight code, div.highlight pre  { padding: 0px; }div.highlight code { padding: 0; }div.highlight .c { color: #75715e }div.highlight .err { color: #960050; background-color: #1e0010 }div.highlight .k { color: #66d9ef }div.highlight .l { color: #ae81ff }div.highlight .n { color: #f8f8f2 }div.highlight .o { color: #f92672 }div.highlight .p { color: #f8f8f2 }div.highlight .cm { color: #75715e }div.highlight .cp { color: #75715e }div.highlight .c1 { color: #75715e }div.highlight .cs { color: #75715e }div.highlight .ge { font-style: italic }div.highlight .gs { font-weight: bold }div.highlight .kc { color: #66d9ef }div.highlight .kd { color: #66d9ef }div.highlight .kn { color: #f92672 }div.highlight .kp { color: #66d9ef }div.highlight .kr { color: #66d9ef }div.highlight .kt { color: #66d9ef }div.highlight .ld { color: #e6db74 }div.highlight .m { color: #ae81ff }div.highlight .s { color: #e6db74 }div.highlight .na { color: #a6e22e }div.highlight .nb { color: #f8f8f2 }div.highlight .nc { color: #a6e22e }div.highlight .no { color: #66d9ef }div.highlight .nd { color: #a6e22e }div.highlight .ni { color: #f8f8f2 }div.highlight .ne { color: #a6e22e }div.highlight .nf { color: #a6e22e }div.highlight .nl { color: #f8f8f2 }div.highlight .nn { color: #f8f8f2 }div.highlight .nx { color: #a6e22e }div.highlight .py { color: #f8f8f2 }div.highlight .nt { color: #f92672 }div.highlight .nv { color: #f8f8f2 }div.highlight .ow { color: #f92672 }div.highlight .w { color: #f8f8f2 }div.highlight .mf { color: #ae81ff }div.highlight .mh { color: #ae81ff }div.highlight .mi { color: #ae81ff }div.highlight .mo { color: #ae81ff }div.highlight .sb { color: #e6db74 }div.highlight .sc { color: #e6db74 }div.highlight .sd { color: #e6db74 }div.highlight .s2 { color: #e6db74 }div.highlight .se { color: #ae81ff }div.highlight .sh { color: #e6db74 }div.highlight .si { color: #e6db74 }div.highlight .sx { color: #e6db74 }div.highlight .sr { color: #e6db74 }div.highlight .s1 { color: #e6db74 }div.highlight .ss { color: #e6db74 }div.highlight .bp { color: #f8f8f2 }div.highlight .vc { color: #f8f8f2 }div.highlight .vg { color: #f8f8f2 }div.highlight .vi { color: #f8f8f2 }div.highlight .il { color: #ae81ff }
+</style>
+</head>
+<body>
+<table class="content"><tr><td class="section commentblock"></td><td class="section codeblock"><div class="highlight"><pre><span class="c1">#!/usr/bin/env ruby</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>Author : Emad Elsaid (<a href="https://github.com/blazeeboy">https://github.com/blazeeboy</a>)
+<strong>Usage</strong> :</p>
+
+<ul>
+<li><code>ruby evalin_comodor.rb &lt;accesstoken&gt;</code>
+this will get a long term access token from the short term one</li>
+<li><code>ruby evalin_comodor.rb</code>
+will start the script</li>
+</ul>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;./evalin.rb&#39;</span> <span class="c1"># https://github.com/blazeeboy/RubyScripts/blob/master/2014-3-30/evalin.rb</span>
+<span class="nb">require</span> <span class="s1">&#39;koala&#39;</span> <span class="c1"># gem install koala</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>create a facebook app and get access token from here
+<a href="https://developers.facebook.com/tools/explorer">https://developers.facebook.com/tools/explorer</a>
+scopes required :
+public<u>profile, basic</u>info, publish<u>checkins, status</u>update, photo<u>upload, video</u>upload, create<u>note, share</u>item, publish<u>stream, manage</u>notifications, publish<u>actions, user</u>friends</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="no">APP_ID</span>      <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
+<span class="no">APP_SECRET</span>  <span class="o">=</span> <span class="s1">&#39;xxxxxxxxxxxxxxxx&#39;</span>
+<span class="no">NOTIFICATIONS_LIMIT</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">if</span> <span class="no">ARGV</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+  <span class="n">oauth</span> <span class="o">=</span> <span class="no">Koala</span><span class="o">::</span><span class="no">Facebook</span><span class="o">::</span><span class="no">OAuth</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">APP_ID</span><span class="p">,</span> <span class="no">APP_SECRET</span><span class="p">)</span>
+    <span class="n">new_access_info</span> <span class="o">=</span> <span class="n">oauth</span><span class="o">.</span><span class="n">exchange_access_token_info</span> <span class="no">ARGV</span><span class="o">.</span><span class="n">first</span>
+    <span class="no">File</span><span class="o">.</span><span class="n">write</span> <span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="n">new_access_info</span><span class="o">[</span><span class="s1">&#39;access_token&#39;</span><span class="o">]</span>
+  <span class="nb">puts</span> <span class="s1">&#39;New Access Token written&#39;</span>
+  <span class="nb">exit</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>respond to comment with mention</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="k">def</span> <span class="nf">respond_to</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">comment_id</span><span class="p">,</span> <span class="n">post_id</span><span class="p">)</span>
+
+  <span class="n">comment</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="n">comment_id</span><span class="p">)</span>
+
+  <span class="n">username</span> <span class="o">=</span> <span class="n">comment</span><span class="o">[</span><span class="s1">&#39;from&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">comment</span><span class="o">[</span><span class="s1">&#39;message&#39;</span><span class="o">]</span>
+  <span class="nb">puts</span> <span class="s2">&quot;responding to : </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>read comment parts languages and code</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="n">groups</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">scan</span><span class="sr"> /#{$name}\s+([a-zA-Z+]+)(.+)/m</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="n">groups</span><span class="o">.</span><span class="n">length</span> <span class="o">!=</span> <span class="mi">1</span>
+
+  <span class="n">language</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+  <span class="n">code</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">strip</span>
+  <span class="k">return</span> <span class="k">unless</span> <span class="n">output</span> <span class="o">=</span> <span class="n">evalin</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">language</span><span class="p">)</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>posting comment reply</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="n">graph</span><span class="o">.</span><span class="n">put_object</span> <span class="n">post_id</span><span class="p">,</span> <span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">message</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">username</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="si">#{</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+
+<span class="k">end</span>
+
+<span class="kp">loop</span> <span class="k">do</span>
+  <span class="k">begin</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>yes each time will read token
+in case you started it then added access token
+or refreshed it you won&#39;t need to restart it</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="n">oauth_access_token</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+    <span class="vg">$graph</span> <span class="o">=</span> <span class="no">Koala</span><span class="o">::</span><span class="no">Facebook</span><span class="o">::</span><span class="no">API</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">oauth_access_token</span><span class="p">)</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>get your name</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="vg">$name</span> <span class="o">=</span> <span class="vg">$graph</span><span class="o">.</span><span class="n">get_object</span><span class="p">(</span><span class="s1">&#39;me&#39;</span><span class="p">)</span><span class="o">[</span><span class="s1">&#39;name&#39;</span><span class="o">]</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>get notifications</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="n">notifications</span> <span class="o">=</span> <span class="o">[]</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="vg">$graph</span><span class="o">.</span><span class="n">get_connections</span><span class="p">(</span><span class="s1">&#39;me&#39;</span><span class="p">,</span><span class="s1">&#39;notifications&#39;</span><span class="p">)</span>
+    <span class="k">begin</span>
+      <span class="n">notifications</span> <span class="o">+=</span> <span class="n">page</span>
+    <span class="k">end</span> <span class="k">while</span> <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">next_page</span> <span class="ow">and</span> <span class="n">notifications</span><span class="o">.</span><span class="n">length</span><span class="o">&lt;=</span><span class="no">NOTIFICATIONS_LIMIT</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>Now lets head to parse and respond to them</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="n">notifications</span><span class="o">.</span><span class="n">reverse_each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+      <span class="k">begin</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">[</span><span class="s1">&#39;application&#39;</span><span class="o">]</span> <span class="ow">and</span> <span class="n">n</span><span class="o">[</span><span class="s1">&#39;application&#39;</span><span class="o">][</span><span class="s1">&#39;name&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Groups&#39;</span> <span class="ow">and</span> <span class="n">n</span><span class="o">[</span><span class="s1">&#39;title&#39;</span><span class="o">].</span><span class="n">include?</span> <span class="s1">&#39;mentioned you&#39;</span>
+
+          <span class="n">ids</span> <span class="o">=</span> <span class="n">n</span><span class="o">[</span><span class="s1">&#39;link&#39;</span><span class="o">].</span><span class="n">scan</span><span class="sr"> /comment_id=([0-9]+)&amp;/</span>
+          <span class="n">post_ids</span> <span class="o">=</span> <span class="n">n</span><span class="o">[</span><span class="s1">&#39;link&#39;</span><span class="o">].</span><span class="n">scan</span><span class="sr"> /permalink\/([0-9]+)\//</span>
+          <span class="k">if</span> <span class="n">ids</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">post_ids</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">respond_to</span> <span class="vg">$graph</span><span class="p">,</span> <span class="n">ids</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">first</span><span class="p">,</span> <span class="n">post_ids</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">first</span> 
+          <span class="k">end</span>
+
+        <span class="k">end</span>
+      <span class="k">rescue</span> 
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>ignore it</p>
+</td><td class="section codeblock"><div class="highlight"><pre>      <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>mark notification as read</p>
+</td><td class="section codeblock"><div class="highlight"><pre>      <span class="vg">$graph</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">n</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">{</span><span class="n">unread</span><span class="p">:</span> <span class="kp">false</span><span class="p">})</span>
+    <span class="k">end</span>
+    <span class="nb">puts</span> <span class="s2">&quot;Notifications found : </span><span class="si">#{</span><span class="n">notifications</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>please rescue if something went wrong
+thanks,</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">&quot;Error : </span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>wait for 60 seconds and try again</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="nb">sleep</span> <span class="mi">60</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+</body>
+</html>
