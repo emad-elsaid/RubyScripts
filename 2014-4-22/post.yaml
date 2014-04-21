@@ -1,0 +1,9 @@
+---
+title: Forgiving ruby
+content: |-
+  sometimes when you write in ruby fast enough you may miss some character, maybe miss write a character or something, i thought that there is a way we can make ruby more forgiving toward your writing mistakes
+  it is easy we'll monkey patch the Object class to respond to methods that doesn't exists but there is another method that is quite like it.
+tags:
+- ruby
+- rails
+gist: https://gist.github.com/11158374
