@@ -1,0 +1,11 @@
+---
+title: How do i automate creating these posts images
+content: |-
+  as a software engineer i get lots of projects to finish and posting new scripts everyday should get less time, so i had to automate more and more parts of this process.
+  i notice that creating post image with illustrative comments is taking about 5/10 minutes to finish, so i had to automate this part.
+  first thing i convert code to well styled HTML using a script i created and puclished before, then i convert it to image using another script i also published earlier, as the image is toooo long i had to crop and make it beautiful with title of the post over it.
+  i searched for a Gem to do it and i couldn't find something more nicer than the famous Cairo library, i used rCairo the Cairo ruby binding.
+tags:
+- ruby
+- cairo
+gist: https://gist.github.com/11221981
