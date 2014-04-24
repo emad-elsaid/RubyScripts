@@ -1,0 +1,81 @@
+<html>
+<head>
+<style>
+body { background: #29281e; padding:0px; margin:0px; font-family: verdana, tahoma; font-size: 13px; }
+.content{ border-collapse: collapse; }
+.section{ padding: 5px; border-top: 1px solid #333; } 
+.commentblock{ width: 40%;text-align: right; vertical-align: top; font-size: 13px; color: #ddd; text-shadow: 1px 1px 0px black; }
+.codeblock{ width: 60%; background: #29281e; border-left: 1px solid #333; padding-left: 10px; }
+.commentblock a{ color: #fff; }
+.codeblock pre{ white-space: pre-wrap; margin: 0px; }
+.highlight { padding: 0px; font-size: 13px; }
+div.highlight, div.highlight code, div.highlight pre  { padding: 0px; }div.highlight code { padding: 0; }div.highlight .c { color: #75715e }div.highlight .err { color: #960050; background-color: #1e0010 }div.highlight .k { color: #66d9ef }div.highlight .l { color: #ae81ff }div.highlight .n { color: #f8f8f2 }div.highlight .o { color: #f92672 }div.highlight .p { color: #f8f8f2 }div.highlight .cm { color: #75715e }div.highlight .cp { color: #75715e }div.highlight .c1 { color: #75715e }div.highlight .cs { color: #75715e }div.highlight .ge { font-style: italic }div.highlight .gs { font-weight: bold }div.highlight .kc { color: #66d9ef }div.highlight .kd { color: #66d9ef }div.highlight .kn { color: #f92672 }div.highlight .kp { color: #66d9ef }div.highlight .kr { color: #66d9ef }div.highlight .kt { color: #66d9ef }div.highlight .ld { color: #e6db74 }div.highlight .m { color: #ae81ff }div.highlight .s { color: #e6db74 }div.highlight .na { color: #a6e22e }div.highlight .nb { color: #f8f8f2 }div.highlight .nc { color: #a6e22e }div.highlight .no { color: #66d9ef }div.highlight .nd { color: #a6e22e }div.highlight .ni { color: #f8f8f2 }div.highlight .ne { color: #a6e22e }div.highlight .nf { color: #a6e22e }div.highlight .nl { color: #f8f8f2 }div.highlight .nn { color: #f8f8f2 }div.highlight .nx { color: #a6e22e }div.highlight .py { color: #f8f8f2 }div.highlight .nt { color: #f92672 }div.highlight .nv { color: #f8f8f2 }div.highlight .ow { color: #f92672 }div.highlight .w { color: #f8f8f2 }div.highlight .mf { color: #ae81ff }div.highlight .mh { color: #ae81ff }div.highlight .mi { color: #ae81ff }div.highlight .mo { color: #ae81ff }div.highlight .sb { color: #e6db74 }div.highlight .sc { color: #e6db74 }div.highlight .sd { color: #e6db74 }div.highlight .s2 { color: #e6db74 }div.highlight .se { color: #ae81ff }div.highlight .sh { color: #e6db74 }div.highlight .si { color: #e6db74 }div.highlight .sx { color: #e6db74 }div.highlight .sr { color: #e6db74 }div.highlight .s1 { color: #e6db74 }div.highlight .ss { color: #e6db74 }div.highlight .bp { color: #f8f8f2 }div.highlight .vc { color: #f8f8f2 }div.highlight .vg { color: #f8f8f2 }div.highlight .vi { color: #f8f8f2 }div.highlight .il { color: #ae81ff }
+</style>
+</head>
+<body>
+<table class="content"><tr><td class="section commentblock"></td><td class="section codeblock"><div class="highlight"><pre><span class="c1">#!/usr/bin/env ruby</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>Author : Emad Elsaid (<a href="https://github.com/blazeeboy">https://github.com/blazeeboy</a>)</p>
+
+<p>this script is a small practice in implementing
+simple sorting algorithms in ruby, i converted
+the sorting algorithms from wikipedia pages</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Array</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>Insertion sort is a simple sorting algorithm that builds
+the final sorted array (or list) one item at a time.
+It is much less efficient on large lists than more advanced
+algorithms such as quicksort, heapsort, or merge sort.
+<strong>wikipedia</strong></p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">insertion_sort!</span>
+
+    <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+      <span class="n">j</span> <span class="o">=</span> <span class="n">i</span>
+      <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">]</span>
+          <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">,</span> <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">]</span>
+          <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>selection sort is a sorting algorithm, specifically an in-place
+comparison sort. It has O(n2) time complexity, making it
+inefficient on large lists, and generally performs worse
+than the similar insertion sort. Selection sort is noted for
+its simplicity, and it has performance advantages over more
+complicated algorithms in certain situations,
+particularly where auxiliary memory is limited.
+<strong>wikipedia</strong></p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">selection_sort!</span>
+     
+    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">j</span><span class="o">|</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>find index of minimum element in the unsorted part</p>
+</td><td class="section codeblock"><div class="highlight"><pre>      <span class="n">iMin</span> <span class="o">=</span> <span class="n">j</span>
+      <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+        <span class="n">iMin</span> <span class="o">=</span> <span class="n">i</span> <span class="k">if</span> <span class="nb">self</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="nb">self</span><span class="o">[</span><span class="n">iMin</span><span class="o">]</span>
+      <span class="k">end</span>
+      
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>then swap it</p>
+</td><td class="section codeblock"><div class="highlight"><pre>      <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">,</span> <span class="nb">self</span><span class="o">[</span><span class="n">iMin</span><span class="o">]</span> <span class="o">=</span> <span class="nb">self</span><span class="o">[</span><span class="n">iMin</span><span class="o">]</span><span class="p">,</span> <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">]</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>lets try our algorithms</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">shuffle</span>
+<span class="nb">p</span> <span class="s1">&#39;before sort : &#39;</span><span class="p">,</span> <span class="n">x</span>
+<span class="n">x</span><span class="o">.</span><span class="n">insertion_sort!</span>
+<span class="nb">p</span> <span class="s1">&#39;after sort : &#39;</span><span class="p">,</span> <span class="n">x</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">shuffle!</span>
+<span class="nb">p</span> <span class="s1">&#39;before sort : &#39;</span><span class="p">,</span> <span class="n">x</span>
+<span class="n">x</span><span class="o">.</span><span class="n">selection_sort!</span>
+<span class="nb">p</span> <span class="s1">&#39;after sort : &#39;</span><span class="p">,</span> <span class="n">x</span>
+</pre></div>
+</td></tr></table>
+</body>
+</html>

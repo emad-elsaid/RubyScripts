@@ -1,0 +1,10 @@
+---
+title: simple sorting algorithms with ruby
+content: this is a small practice for implementing simple sorting algorithms using
+  ruby, i grabed the Pseudocode from their respective wikipedia pages and converted
+  them to ruby, one new thing i have learned from this simple practice is swapping
+  arrays elements in single line of code.
+tags:
+- ruby
+- algorithm
+gist: https://gist.github.com/11268323
