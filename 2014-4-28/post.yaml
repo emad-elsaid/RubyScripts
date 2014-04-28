@@ -1,9 +1,10 @@
 ---
-title: title here
+title: Create a graph of all defined Classes
 content: |-
-  content here
-  another line
+  i wanted to see ruby classes and each class connected to its parent
+  i used the ruby-graphviz, it turns out that there is another gme named graphviz and it is not the one tha will work correctly.
+  my method was fairly easy, i get all defined constants then filter them to get classes names only, after that i add a node for each class, then iterated on them to add edges between every class and its parent, and then i saved graph as png and pdf, an output example looks like this http://imgur.com/Z1LfLn1
 tags:
 - ruby
-- rails
+- graph
 gist: https://gist.github.com/11377844
