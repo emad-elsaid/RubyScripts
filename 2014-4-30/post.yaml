@@ -1,0 +1,12 @@
+---
+title: Scrap UK top 40 singles chart from BBC
+content: |-
+  this is small but useful script, it could be used as a plugin for sublimeText, CMS, news website to get the top 40 UK singles from BBC website.
+  script gets teh printable format of the chart and extract data then form them as array of Hash maps easy to iterate on and filter
+  the original full chart is here : http://www.bbc.co.uk/radio1/chart/singles and they got a printable format page here : http://www.bbc.co.uk/radio1/chart/singles/print so it was easier for us to scrap the printable version.
+  have fun using it.
+tags:
+- ruby
+- bbc
+- uk_top_40
+gist: https://gist.github.com/11428860
