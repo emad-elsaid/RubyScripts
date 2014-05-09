@@ -1,0 +1,10 @@
+---
+title: Download latest images from AWW subreddit
+content: |-
+  this script will use ruby reddit api gem to browse a subreddit i like named AWW, they post cute pets images, i will browse this subreddit latest posts and will download images to my machine, this script could be applied to any subreddit you want to get image from it, the script could be combined with a previous script of mine to post these images to facebook page and spread the cuteness to the world :D
+  have fun guys.
+tags:
+- ruby
+- reddit
+- pets
+gist: https://gist.github.com/673e708deaacd3e78120
