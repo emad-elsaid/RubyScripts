@@ -1,0 +1,11 @@
+---
+title: Auto change wallpaper on linux from reddit
+content: |-
+  this script will get a new image from reddit every period and write it to an ixisting image on you Hard drive, if you set this image as your wallpaper you will have a constantly changing desktop wallpaper from the amazing subreddit called EarthPorn, they post grazy beautiful images of our mother earth.
+
+  i tried this script on a linux Centos 6 machine with GNOME/GTK2 Interface
+tags:
+- ruby
+- reddit
+- linux
+gist: https://gist.github.com/c199f2146093e73a7772

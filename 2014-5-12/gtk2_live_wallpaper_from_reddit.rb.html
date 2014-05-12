@@ -1,0 +1,79 @@
+<html>
+<head>
+<style>
+body { background: #29281e; padding:0px; margin:0px; font-family: verdana, tahoma; font-size: 13px; }
+.content{ border-collapse: collapse; }
+.section{ padding: 5px; border-top: 1px solid #333; } 
+.commentblock{ width: 40%;text-align: right; vertical-align: top; font-size: 13px; color: #ddd; text-shadow: 1px 1px 0px black; }
+.codeblock{ width: 60%; background: #29281e; border-left: 1px solid #333; padding-left: 10px; }
+.commentblock a{ color: #fff; }
+.codeblock pre{ white-space: pre-wrap; margin: 0px; }
+.highlight { padding: 0px; font-size: 13px; }
+div.highlight, div.highlight code, div.highlight pre  { padding: 0px; }div.highlight code { padding: 0; }div.highlight .c { color: #75715e }div.highlight .err { color: #960050; background-color: #1e0010 }div.highlight .k { color: #66d9ef }div.highlight .l { color: #ae81ff }div.highlight .n { color: #f8f8f2 }div.highlight .o { color: #f92672 }div.highlight .p { color: #f8f8f2 }div.highlight .cm { color: #75715e }div.highlight .cp { color: #75715e }div.highlight .c1 { color: #75715e }div.highlight .cs { color: #75715e }div.highlight .ge { font-style: italic }div.highlight .gs { font-weight: bold }div.highlight .kc { color: #66d9ef }div.highlight .kd { color: #66d9ef }div.highlight .kn { color: #f92672 }div.highlight .kp { color: #66d9ef }div.highlight .kr { color: #66d9ef }div.highlight .kt { color: #66d9ef }div.highlight .ld { color: #e6db74 }div.highlight .m { color: #ae81ff }div.highlight .s { color: #e6db74 }div.highlight .na { color: #a6e22e }div.highlight .nb { color: #f8f8f2 }div.highlight .nc { color: #a6e22e }div.highlight .no { color: #66d9ef }div.highlight .nd { color: #a6e22e }div.highlight .ni { color: #f8f8f2 }div.highlight .ne { color: #a6e22e }div.highlight .nf { color: #a6e22e }div.highlight .nl { color: #f8f8f2 }div.highlight .nn { color: #f8f8f2 }div.highlight .nx { color: #a6e22e }div.highlight .py { color: #f8f8f2 }div.highlight .nt { color: #f92672 }div.highlight .nv { color: #f8f8f2 }div.highlight .ow { color: #f92672 }div.highlight .w { color: #f8f8f2 }div.highlight .mf { color: #ae81ff }div.highlight .mh { color: #ae81ff }div.highlight .mi { color: #ae81ff }div.highlight .mo { color: #ae81ff }div.highlight .sb { color: #e6db74 }div.highlight .sc { color: #e6db74 }div.highlight .sd { color: #e6db74 }div.highlight .s2 { color: #e6db74 }div.highlight .se { color: #ae81ff }div.highlight .sh { color: #e6db74 }div.highlight .si { color: #e6db74 }div.highlight .sx { color: #e6db74 }div.highlight .sr { color: #e6db74 }div.highlight .s1 { color: #e6db74 }div.highlight .ss { color: #e6db74 }div.highlight .bp { color: #f8f8f2 }div.highlight .vc { color: #f8f8f2 }div.highlight .vg { color: #f8f8f2 }div.highlight .vi { color: #f8f8f2 }div.highlight .il { color: #ae81ff }
+</style>
+</head>
+<body>
+<table class="content"><tr><td class="section commentblock"></td><td class="section codeblock"><div class="highlight"><pre><span class="c1">#!/usr/bin/env ruby</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>Author : Emad Elsaid (<a href="https://github.com/blazeeboy">https://github.com/blazeeboy</a>)</p>
+
+<p>autochanging wallpaper from reddit images
+you have to point the script to your existing
+file you set it as a wallpaper and it will override
+it with a new image every 5 minutes.</p>
+
+<p>this script works on centos 6 with GNOME/GTK2 interface</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span> <span class="c1"># we&#39;ll need to download image with that</span>
+<span class="nb">require</span> <span class="s1">&#39;ruby_reddit_api&#39;</span> <span class="c1"># gem install ruby_reddit_api</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>class will be initialized with
+a subreddit to monitor and a
+destination file to write the
+downloaded image to it</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="k">class</span> <span class="nc">RedditWallpaper</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span> <span class="n">subreddit</span><span class="p">,</span> <span class="n">destination_file</span> <span class="o">=</span> <span class="s1">&#39;bg.jpg&#39;</span> <span class="p">)</span>
+    <span class="vi">@subreddit</span> <span class="o">=</span> <span class="n">subreddit</span>
+    <span class="vi">@path</span> <span class="o">=</span> <span class="n">destination_file</span>
+    <span class="vi">@downloaded</span> <span class="o">=</span> <span class="o">[]</span>
+    <span class="vi">@not_downloaded</span> <span class="o">=</span> <span class="o">[]</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>download the url to destination</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">download</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">.jpg&quot;</span> <span class="p">)</span><span class="o">.</span><span class="n">read</span>
+    <span class="no">File</span><span class="o">.</span><span class="n">write</span>  <span class="vi">@path</span><span class="p">,</span> <span class="n">image</span>
+  <span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>update wallpaper and update images cache</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="k">def</span> <span class="nf">update</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>make me a reddit client please</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="n">r</span> <span class="o">=</span> <span class="no">Reddit</span><span class="o">::</span><span class="no">Api</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>update earth</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="n">posts</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">browse</span> <span class="vi">@subreddit</span>
+    <span class="n">posts</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
+      <span class="vi">@not_downloaded</span> <span class="o">&lt;&lt;</span> <span class="n">r</span><span class="o">.</span><span class="n">url</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="s1">&#39;imgur&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="o">!</span><span class="vi">@downloaded</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">image</span> <span class="o">=</span> <span class="vi">@not_downloaded</span><span class="o">.</span><span class="n">shift</span>
+    <span class="n">download</span> <span class="n">image</span>
+
+  <span class="k">end</span>
+
+<span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>i&#39;ll get images from earthporn
+they have lots of great images of
+nature places
+and then i&#39;ll update it every 5 minutes</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="n">downloader</span> <span class="o">=</span> <span class="no">RedditWallpaper</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;earthPorn&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/eelsaid/Pictures/bg.jpg&#39;</span>
+<span class="kp">loop</span> <span class="k">do</span>
+  <span class="n">downloader</span><span class="o">.</span><span class="n">update</span>
+  <span class="nb">sleep</span> <span class="mi">5</span><span class="o">*</span><span class="mi">60</span> <span class="c1"># wait for 5 minutes</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+</body>
+</html>
