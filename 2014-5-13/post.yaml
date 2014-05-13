@@ -1,0 +1,12 @@
+---
+title: Printing twitter and github followers
+content: |-
+  this script could be part of large script of monitoring your followers number across social media, and sum them to form a social score of some kind just like klout does.
+  as i didn't find an apropriate api to get these data as guest i had to scrap the data from html pages using regex.
+  if there are other social media that we can add to this script i'll be more than happy if you forked this script and modified.
+tags:
+- ruby
+- rails
+- twitter
+- github
+gist: https://gist.github.com/1d89746399c649014c7d
