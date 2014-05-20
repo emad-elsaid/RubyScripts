@@ -1,0 +1,12 @@
+---
+title: Share your music library on the network
+content: |-
+  this script uses sinatra to share your media files from your songs library the script will enable users to play music on page using a streaming url
+  this script is part of a larger one to create a media library on the network with upload capability, play list, favorite, commenting...etc
+  something like grooveshark.com but on the local network.
+  if you want to participate please fork this project, enhance teh script and commit it.
+tags:
+- ruby
+- rails
+- music
+gist: https://gist.github.com/8dbdff11f1923cf22b6c

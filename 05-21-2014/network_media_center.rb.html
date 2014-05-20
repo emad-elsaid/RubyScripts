@@ -1,0 +1,92 @@
+<html>
+<head>
+<style>
+body { background: #29281e; padding:0px; margin:0px; font-family: verdana, tahoma; font-size: 13px; }
+.content{ border-collapse: collapse; }
+.section{ padding: 5px; border-top: 1px solid #333; } 
+.commentblock{ width: 40%;text-align: right; vertical-align: top; font-size: 13px; color: #ddd; text-shadow: 1px 1px 0px black; }
+.codeblock{ width: 60%; background: #29281e; border-left: 1px solid #333; padding-left: 10px; }
+.commentblock a{ color: #fff; }
+.codeblock pre{ white-space: pre-wrap; margin: 0px; }
+.highlight { padding: 0px; font-size: 13px; }
+div.highlight, div.highlight code, div.highlight pre  { padding: 0px; }div.highlight code { padding: 0; }div.highlight .c { color: #75715e }div.highlight .err { color: #960050; background-color: #1e0010 }div.highlight .k { color: #66d9ef }div.highlight .l { color: #ae81ff }div.highlight .n { color: #f8f8f2 }div.highlight .o { color: #f92672 }div.highlight .p { color: #f8f8f2 }div.highlight .cm { color: #75715e }div.highlight .cp { color: #75715e }div.highlight .c1 { color: #75715e }div.highlight .cs { color: #75715e }div.highlight .ge { font-style: italic }div.highlight .gs { font-weight: bold }div.highlight .kc { color: #66d9ef }div.highlight .kd { color: #66d9ef }div.highlight .kn { color: #f92672 }div.highlight .kp { color: #66d9ef }div.highlight .kr { color: #66d9ef }div.highlight .kt { color: #66d9ef }div.highlight .ld { color: #e6db74 }div.highlight .m { color: #ae81ff }div.highlight .s { color: #e6db74 }div.highlight .na { color: #a6e22e }div.highlight .nb { color: #f8f8f2 }div.highlight .nc { color: #a6e22e }div.highlight .no { color: #66d9ef }div.highlight .nd { color: #a6e22e }div.highlight .ni { color: #f8f8f2 }div.highlight .ne { color: #a6e22e }div.highlight .nf { color: #a6e22e }div.highlight .nl { color: #f8f8f2 }div.highlight .nn { color: #f8f8f2 }div.highlight .nx { color: #a6e22e }div.highlight .py { color: #f8f8f2 }div.highlight .nt { color: #f92672 }div.highlight .nv { color: #f8f8f2 }div.highlight .ow { color: #f92672 }div.highlight .w { color: #f8f8f2 }div.highlight .mf { color: #ae81ff }div.highlight .mh { color: #ae81ff }div.highlight .mi { color: #ae81ff }div.highlight .mo { color: #ae81ff }div.highlight .sb { color: #e6db74 }div.highlight .sc { color: #e6db74 }div.highlight .sd { color: #e6db74 }div.highlight .s2 { color: #e6db74 }div.highlight .se { color: #ae81ff }div.highlight .sh { color: #e6db74 }div.highlight .si { color: #e6db74 }div.highlight .sx { color: #e6db74 }div.highlight .sr { color: #e6db74 }div.highlight .s1 { color: #e6db74 }div.highlight .ss { color: #e6db74 }div.highlight .bp { color: #f8f8f2 }div.highlight .vc { color: #f8f8f2 }div.highlight .vg { color: #f8f8f2 }div.highlight .vi { color: #f8f8f2 }div.highlight .il { color: #ae81ff }
+</style>
+</head>
+<body>
+<table class="content"><tr><td class="section commentblock"></td><td class="section codeblock"><div class="highlight"><pre><span class="c1">#!/usr/bin/env ruby</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>Author : Emad Elsaid (<a href="https://github.com/blazeeboy">https://github.com/blazeeboy</a>)</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span> <span class="c1"># gem install sinatra</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>specify port and environment as production
+to allow external access to server</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="n">set</span> <span class="ss">:port</span><span class="p">,</span> <span class="mi">3000</span>
+<span class="n">set</span> <span class="ss">:environment</span><span class="p">,</span> <span class="ss">:production</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>your media library path</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="no">MEDIA_PATH</span> <span class="o">=</span> <span class="s1">&#39;/Volumes/Data/Songs&#39;</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>get all mp3 files in my media library and sort
+then by file name</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="n">mp3s</span> <span class="o">=</span> <span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">MEDIA_PATH</span><span class="si">}</span><span class="s2">/**/*.mp3&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">mp3s</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">mp3</span><span class="o">|</span>
+  <span class="p">{</span>
+    <span class="n">path</span><span class="p">:</span> <span class="n">mp3</span><span class="p">,</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">mp3</span><span class="p">,</span> <span class="s1">&#39;.mp3&#39;</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>render the index page as set if files names
+and a player beside it, player will sent file index in data variable
+and another path will read file to stream it</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="n">get</span> <span class="s1">&#39;/&#39;</span> <span class="k">do</span>
+  <span class="n">media_partial</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> 
+    <span class="s1">&#39;&lt;audio src=&quot;/play/&#39;</span><span class="o">+</span><span class="n">i</span><span class="o">.</span><span class="n">to_s</span><span class="o">+</span><span class="s1">&#39;&quot; controls preload=&quot;none&quot;&gt;&lt;/audio&gt; &#39;</span><span class="o">+</span>
+    <span class="s1">&#39;&lt;a href=&quot;/play/&#39;</span><span class="o">+</span><span class="n">i</span><span class="o">.</span><span class="n">to_s</span><span class="o">+</span><span class="s1">&#39;&quot;&gt;&#39;</span><span class="o">+</span><span class="n">d</span><span class="o">[</span><span class="ss">:filename</span><span class="o">]+</span><span class="s1">&#39;&lt;/a&gt;&#39;</span>
+  <span class="k">end</span><span class="o">.</span><span class="n">join</span> <span class="s1">&#39;&lt;/br&gt;&#39;</span>
+<span class="o">&lt;&lt;-</span><span class="no">EOT</span>
+<span class="err">&lt;!DOCTYPE html&gt;</span>
+<span class="err">&lt;html&gt;</span>
+<span class="err">  &lt;head&gt;</span>
+<span class="err">    &lt;style&gt;</span>
+<span class="err">      body{</span>
+<span class="err">        font: 14px Tahoma;</span>
+<span class="err">        line-height: 150%;</span>
+<span class="err">      }</span>
+<span class="err">    &lt;/style&gt;</span>
+<span class="err">    &lt;title&gt;Shared Media Center&lt;/title&gt;</span>
+<span class="err">  &lt;/head&gt;</span>
+<span class="err">  &lt;body&gt;</span>
+<span class="o">&lt;!</span><span class="no">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">style</span><span class="o">&gt;</span>
+      <span class="n">body</span><span class="p">{</span>
+        <span class="n">font</span><span class="p">:</span> <span class="mi">14</span><span class="n">px</span> <span class="no">Tahoma</span><span class="p">;</span>
+        <span class="n">line</span><span class="o">-</span><span class="n">height</span><span class="p">:</span> <span class="mi">150</span><span class="o">%</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/style&gt;</span>
+<span class="sr">    &lt;title&gt;Shared Media Center&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/head&gt;</span>
+<span class="sr">  &lt;body&gt;</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>{media_partial}</p>
+</td><td class="section codeblock"><div class="highlight"><pre>    <span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>{data.size} Media files found.</p>
+</td><td class="section codeblock"><div class="highlight"><pre>  <span class="o">&lt;</span><span class="sr">/body&gt;</span>
+<span class="sr">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="no">EOT</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr><tr><td class="section commentblock"><p>this path will catch any url starts with &quot;play&quot;
+and will stream media to user, so when
+user hit the play button it&#39;ll start playing
+the mp3 file</p>
+</td><td class="section codeblock"><div class="highlight"><pre><span class="n">get</span> <span class="s1">&#39;/play/:id&#39;</span> <span class="k">do</span>
+  <span class="n">send_file</span> <span class="n">data</span><span class="o">[</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">].</span><span class="n">to_i</span><span class="o">][</span><span class="ss">:path</span><span class="o">]</span>
+<span class="k">end</span>
+</pre></div>
+</td></tr></table>
+</body>
+</html>
