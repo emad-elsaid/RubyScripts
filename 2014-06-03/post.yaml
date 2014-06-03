@@ -1,0 +1,10 @@
+---
+title: A Method swapping between objects in ruby (method swizzle)
+content: |-
+  objective C has a weired feature, it can swaps 2 methods between objects, so if you are trying to call a Method1 from Object1 it will call Method2 from Object2, i created a solution for that in ruby as there is no native implementation in our lovely language, but Matz Gave us a great dynamic language to hack in to.
+  first i aliased the two methods in the classes of the two objects then i reimplemented the two methods in objects to call the other method.
+  this way you can swap methods between objects and as Classes itself is an object it self we can swap the new method or any other class method :D
+tags:
+- ruby
+- rails
+gist: https://gist.github.com/0dbe5809e36299cf7eb5
