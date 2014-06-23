@@ -1,0 +1,11 @@
+---
+title: An alarm to tell you to go home with ruby and GTK
+content: |-
+  this script is rather simple one, it will wait until you finish work then show a window with a funny text that tells you to go home and enjoy your life.
+  this script will me very useful if you put it in your login scripts on your working laptop, this will make you know when will your official working hours are done and you're ready to go home.
+  this will work for flexible working hours as some companies tells you come in a certain hours adn you should leave after 8 hours of this time.
+  have fun guys :D
+tags:
+- ruby
+- gtk
+gist: https://gist.github.com/34c6db0d7df451b730b6
