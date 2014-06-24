@@ -1,0 +1,10 @@
+---
+title: Download a list of email gravatar images
+content: |-
+  this is a small practice of downloading a list of anonymous emails gravatar images, this could give you a good indicator of what email is active.
+  the script is for fun use only, i got the list of emails from pastebin
+  and you can use any emails list.
+tags:
+- ruby
+- gravatar
+gist: https://gist.github.com/b650a94b82ff423c0e30
